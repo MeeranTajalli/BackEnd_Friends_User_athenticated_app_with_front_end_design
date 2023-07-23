@@ -1,4 +1,5 @@
 <br>
+<% if user_signed_in? %>
 <div class="table-responsive">
 <table class="table table-hover table table-bordered table-striped">
   <caption>List of Friends</caption>
@@ -9,25 +10,34 @@
     <th>Email</th>
     <th>Phone</th>
     <th>Facebook</th>
+    <th>User Id</th>
     <th>Actions</th>
   </tr>
   </thead>
   <tbody>
+
   <% @friends.each do |friend| %>
+    <% if friend.user == current_user %>
     <tr>
       <td><%= friend.first_name %></td>
       <td><%= friend.last_name %></td>
       <td><%= friend.email %></td>
       <td><%= friend.phone %></td>
       <td><%= friend.facebook %></td>
+      <td><%= friend.user_id %> </td>
       <td>
         <%= link_to "Show", friend %>
         <%= link_to "Edit", edit_friend_path(friend) %>
-        <%= link_to "Delete", friend, method: :delete, data: { confirm: "Are you sure?" } %>
       </td>
     </tr>
+  <% end %>
   <% end %>
   </tbody>
 </table>
 </div>
 <%= link_to "New friend", new_friend_path , class: "btn btn-secondary" %>
+
+<%end %>
+Before You can do any adding, updating or deleting of friends, you need to Sign-In or Sign-Up first.
+Kindly visit the Sign-In page if you have an existing account.
+Visit the Sign-Up page if you don't have an existing account.

@@ -2,7 +2,11 @@
   <h1> Friend Details</h1>
    <br> 
   <%= render @friend %>
-   <%= link_to "Edit this friend", edit_friend_path(@friend) , class: "btn btn-secondary" %>
+  <%= link_to "Edit this friend", edit_friend_path(@friend) , class: "btn btn-secondary" %>
  <%= link_to "Back to friends", friends_path, class: "btn btn-dark" %>
-  </div>
+  <br>
+
+  <%= button_to "Delete", @friend, method: :delete, data: { disable_with: "Deleting..." }, class: "btn btn-danger btn-delete" %>
+
+</div>
 
